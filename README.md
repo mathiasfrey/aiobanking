@@ -11,6 +11,9 @@ Architecture PoC showing event sourcing for banking use cases
 # load root user
 docker-compose run sor python manage.py loaddata fixtures/users.json
 
+# load test data
+docker-compose run sor python manage.py loaddata current/fixtures/current.json
+
 # Start
 docker-compose up -d
 ```
@@ -28,7 +31,8 @@ sudo chown -R $USER sor
 
 ```
 docker-compose run sor python manage.py createsuperuser
-docker-compose run zuri python manage.py migrate
+docker-compose run sor python manage.py migrate
+docker-compose run sor python manage.py makemigrations
 ```
 
 ## Rebuild Image:
