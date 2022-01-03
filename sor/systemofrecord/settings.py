@@ -76,19 +76,11 @@ WSGI_APPLICATION = 'systemofrecord.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db',
-        'USER': 'debezium',
-        'PASSWORD': 'dbz',
-        'HOST': 'db',
-        'PORT': 5432,
-    } ,
-    'db2': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db',
-        'USER': 'user',
-        'PASSWORD': 'password',
-        'HOST': 'db2',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
         'PORT': 3306,
     }
 }
