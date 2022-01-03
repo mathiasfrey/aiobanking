@@ -1,0 +1,8 @@
+fastapi
+aiokafka
+loguru
+pytest
+pytest-cov
+pytest-asyncio
+uvicorn
+requests

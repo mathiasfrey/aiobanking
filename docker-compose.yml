@@ -67,3 +67,15 @@ services:
     command: faust -A soa_app worker -l info
     depends_on:
       - kafka
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: fastapi.Dockerfile
+
+    restart: unless-stopped
+    command: uvicorn main:app --reload --workers 1 --host 0.0.0.0 --port 8001
+    volumes:
+      - ./soe/:/usr/src/app
+    ports:
+      - 8003:8001

@@ -1,5 +1,5 @@
 # aiobanking
-Architecture PoC showing event sourcing for banking use cases
+Architecture PoC showing event sourcing for banking use cases.
 
 
 
@@ -57,6 +57,5 @@ docker-compose build django
 
 
 # Acknowledgment
-
-The Kafka setup including source code was taken from [David Farrugia](https://towardsdatascience.com/introduction-to-kafka-stream-processing-in-python-e30d34bf3a12)
-
+The setup of mysql, kafka and debezium was taken from the [debezium tutorial](https://debezium.io/documentation/reference/1.8/tutorial.html). This was then connected to faust as explained by [David Farrugia](https://towardsdatascience.com/introduction-to-kafka-stream-processing-in-python-e30d34bf3a12). The blog post by
+[Benjamin Ramser](https://iwpnd.pw/articles/2020-03/apache-kafka-fastapi-geostream) helped me to set up a frontend listening to websockets fed by a stream.
