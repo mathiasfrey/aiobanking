@@ -15,8 +15,8 @@ load on any of the backend systems.
 As a side effect the whole organization is now
 operating in real-time.
 
-![](aiobanking.png)
-
+![](docs/aiobanking.png)
+![](docs/aiobanking.screenshots.png)
 
 # Run this PoC
 ```
@@ -44,7 +44,7 @@ changes to the existing accounts.
 Visit http://127.0.0.1:1234 and watch processed account changes
 coming in.
 
-# Inspect System of Integration (SoI) and System of Analytics (SoA)
+## Inspect System of Integration (SoI) and System of Analytics (SoA)
 ```
 # Log in into the database
 docker run -it --rm --network aiobanking_default --name mysqlterm --link aiobanking_mysql_1 --rm mysql:8.0 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" --host=mysql' 
