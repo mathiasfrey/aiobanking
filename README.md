@@ -21,7 +21,7 @@ operating in real-time.
 # Run this PoC
 ```
 # Start
-./docker-compose-up -d
+./docker-compose up -d
 
 # Populate the database
 ./populate-db.sh
@@ -39,7 +39,7 @@ Visit http://127.0.0.1:8000/admin/current/currentaccount/ with
 your browser (user `root`, password `root`). It's key you create
 changes to the existing accounts.
 
-## System of Engageent (SoE)
+## System of Engagement (SoE)
 
 Visit http://127.0.0.1:1234 and watch processed account changes
 coming in.
