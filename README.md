@@ -77,6 +77,9 @@ docker-compose run sor python manage.py makemigrations
 
 # Rebuild Image:
 docker-compose build django
+
+# Running containers + IDs nicely formatted
+docker ps --format '{{.ID}}\t{{.Names}}'
 ```
 
 

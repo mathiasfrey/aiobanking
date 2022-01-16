@@ -27,8 +27,8 @@ services:
   
   connect:
     image: debezium/connect:1.8
-    build:
-      context: debezium
+    #build:
+    #  context: debezium
     ports:
       - 8083:8083
       - 5005:5005
