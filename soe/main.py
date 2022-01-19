@@ -1,6 +1,7 @@
 import asyncio
 import json
 import typing
+from mysql.connector import (connection)
 
 # https://github.com/iwpnd/geo-stream-kafka/blob/master/geostream/consumer/app/main.py
 
@@ -77,6 +78,33 @@ class WebsocketConsumer(WebSocketEndpoint):
             logger.info(response)
             await websocket.send_text(f"{response.json()}")
             self.counter = self.counter + 1
+
+@app.get("/table")
+def table():
+
+    cnx = connection.MySQLConnection(
+        user='mysqluser', password='mysqlpw',
+        host='mysql',
+        database='inventory')
+    
+    cursor = cnx.cursor()
+
+    query = ("SELECT id, account, balance  FROM current_currentaccount")
+
+    cursor.execute(query)
+    
+    recs = []
+    for (id, account, balance) in cursor:
+        recs.append(
+            {"id": id,
+            "account": account,
+            "balance": balance}
+        )
+
+    cursor.close()
+
+    cnx.close()
+    return recs
 
 @app.get("/ping")
 def ping():
