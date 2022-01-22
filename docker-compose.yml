@@ -79,3 +79,19 @@ services:
       - ./soe/:/usr/src/app
     ports:
       - 8003:8001
+
+  aiobankingui:
+    container_name: aiobankingui
+    build:
+      context: .
+      dockerfile: aiobankingui/Dockerfile
+    volumes:
+      - "./aiobankingui/:/app"
+      - "/app/node_modules"
+    ports:
+      - 3001:3000
+      - 35729:35729
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - fastapi
