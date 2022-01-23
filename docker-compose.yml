@@ -1,12 +1,11 @@
 version: "3"
 services:
-  
   zookeeper:
     image: debezium/zookeeper:1.8
     ports:
-     - 2181:2181
-     - 2888:2888
-     - 3888:3888
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
   kafka:
     image: debezium/kafka:1.8
     ports:
@@ -15,7 +14,7 @@ services:
       - zookeeper
     environment:
       - ZOOKEEPER_CONNECT=zookeeper:2181
-  
+
   mysql:
     image: debezium/example-mysql:1.8
     ports:
@@ -23,8 +22,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=debezium
       - MYSQL_USER=mysqluser
-      - MYSQL_PASSWORD=mysqlpw 
-  
+      - MYSQL_PASSWORD=mysqlpw
+
   connect:
     image: debezium/connect:1.8
     #build:
@@ -61,9 +60,9 @@ services:
 
   faust:
     container_name: faust
-    build: 
+    build:
       context: .
-      dockerfile: faust.Dockerfile  
+      dockerfile: faust.Dockerfile
     command: faust -A soa_app worker -l info
     depends_on:
       - kafka
@@ -84,10 +83,10 @@ services:
     container_name: aiobankingui
     build:
       context: .
-      dockerfile: aiobankingui/Dockerfile
+      dockerfile: ui.Dockerfile
     volumes:
       - "./aiobankingui/:/app"
-      - "/app/node_modules"
+      - "./aiobankingui/:/app/node_modules"
     ports:
       - 3001:3000
       - 35729:35729
