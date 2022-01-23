@@ -20,8 +20,17 @@ operating in real-time.
 
 # Run this PoC
 ```
-# Start
-./docker-compose up -d
+# Start (for the daring ones)
+docker-compose up -d
+
+# It's much better to start the containers in the sequence of their dependencies
+docker-compose up -d mysql
+docker-compose up -d django
+docker-compose up -d zookeeper
+docker-compose up -d kafka
+docker-compose up -d connect
+docker-compose up -d faust
+docker-compose up -d fastapi
 
 # Populate the database
 ./populate-db.sh
