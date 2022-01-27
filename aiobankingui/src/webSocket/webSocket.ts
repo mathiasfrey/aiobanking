@@ -1,13 +1,17 @@
 export const getInitialAccountData = () => {};
 
-export const observeAccountChanges: () => void = () => {
+interface ObserveAccountChangesInterface {
+  callbackFunction: (balance: number) => void;
+}
+export const observeAccountChanges = ({ callbackFunction }: ObserveAccountChangesInterface) => {
   const accountChangesWS = new WebSocket("ws://127.0.0.1:8003/ws-raw");
   accountChangesWS.onopen = () => {
     console.log("connected");
   };
   accountChangesWS.onmessage = (evt) => {
     const message = JSON.parse(evt.data);
-    console.log(message);
+    console.log(message.payload.after.balance);
+    callbackFunction(message.payload.after.balance);
   };
   const closeConnection = () => {
     accountChangesWS.onclose = () => {

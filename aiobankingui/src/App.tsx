@@ -2,8 +2,9 @@ import React from "react";
 import { observeAccountChanges } from "./webSocket/webSocket";
 import "./App.css";
 
-const App: React.FC = () => {
-  return <div className="App"></div>;
-};
+export const App: React.FC = () => {
+  const [observedChange, setObservedChange] = React.useState<number>();
+  observeAccountChanges({ callbackFunction: setObservedChange });
 
-export default App;
+  return <div className="App">latest balance change to: {<p>{observedChange}</p>}</div>;
+};

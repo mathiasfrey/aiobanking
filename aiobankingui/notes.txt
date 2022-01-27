@@ -1,0 +1,6 @@
+
+Run the docker container with the aiobankingui
+docker-compose  up -d aiobankingui 
+
+Deploye UI changes to the docker-running react app
+docker-compose  up -d --build aiobankingui
