@@ -35,8 +35,14 @@ curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json"
 cd soe
 python -m SimpleHTTPServer 1234
 
-# Start the UI
+# For the first time: deploy the React UI to the docker-running react app
+docker-compose  up -d --build aiobankingui
+
+# Run the docker container with the React UI
 docker-compose  up -d aiobankingui
+
+# Open the React UI running in the docker container
+http://127.0.0.1:3001/
 ```
 
 ## System of Record (SoR)
