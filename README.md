@@ -62,8 +62,18 @@ changes to the existing accounts.
 
 ## System of Engagement (SoE)
 
+Thanks to Ivan Burda there is polished UI available: http://127.0.0.1:3001/
+
+Updates on the base data come in immediately, the model calculations will 
+be displayed 3 sec later.
+
+![](docs/aiobanking.ui.png)
+
+### Low-level debug UI
 Visit http://127.0.0.1:1234 and watch processed account changes
 coming in.
+
+
 
 ## Inspect System of Integration (SoI) and System of Analytics (SoA)
 
